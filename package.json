@@ -1,7 +1,7 @@
 {
   "name": "md5-file",
   "main": "index.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "return an md5sum of a given file",
   "keywords": [
     "md5sum",
