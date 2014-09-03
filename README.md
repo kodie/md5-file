@@ -1,5 +1,7 @@
 # md5-file
 
+[![NPM](https://nodei.co/npm-dl/md5-file.png?months=6)](https://nodei.co/npm/md5-file/)
+
 ### Overview
 
 Simply return an `md5` sum of a given file.
