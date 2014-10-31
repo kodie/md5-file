@@ -12,34 +12,42 @@ Simply return an `md5` sum of a given file.
 $ npm install md5-file
 ```
 
-### Sync
+### API
+
+_Sync:_
+
+__md5file(path)__
 
 ```javascript
-var md5 = require('md5-file');
+var md5file = require('md5-file');
 
-md5('path/to/a_file'); // '18e904aae79b5642ed7975c0a0074936'
+md5file('path/to/a_file'); // '18e904aae79b5642ed7975c0a0074936'
 ```
 
-### Async
+_Async:_
+
+__md5file(path, callback, [strict])__
+
+If _strict_ is `true` and there is an error it will `throw` it, otherwise it will pass an error string through the callback.
 
 ```javascript
-md5.async('./README.md', function (data) {
+md5file.async('./README.md', function (data) {
   console.log(data);
 });
 
-md5.async('./README.md', function (data) {
+md5file.async('./README.md', function (data) {
   console.log(data);
 }, true);
 
 // errors
 
 // non-strict: will pass through an error to `data`
-md5.async('./null', function (data) {
+md5file.async('./null', function (data) {
   console.log(data);
 });
 
 // strict: will throw an error
-md5.async('./null', function (data) {
+md5file.async('./null', function (data) {
   console.log(data);
 }, true);
 ```

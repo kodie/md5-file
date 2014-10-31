@@ -1,3 +1,5 @@
+'use strict';
+
 var md5 = require('./index');
 
 console.log('md5 (1) ' + md5('./README.md'));
