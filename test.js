@@ -17,5 +17,5 @@ md5.async('./LICENSE.md', function (data) {
 
 // non-strict: will pass through an error to `data`
 md5.async('./null', function (data) {
-  assert.equal(JSON.stringify(data), '{"errno":34,"code":"ENOENT","path":"./null"}');
+  assert.equal(data.code, 'ENOENT');
 });
