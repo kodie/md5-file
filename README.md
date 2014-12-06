@@ -53,3 +53,7 @@ md5File.async('./null', function (data) {
   console.log(data);
 }, true);
 ```
+
+### License
+
+MIT
