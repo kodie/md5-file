@@ -3,14 +3,14 @@
 var md5 = require('./index');
 var assert = require('assert');
 
-assert.equal(md5('./README.md'), 'fb88aa66d27282070ab60b52301651af');
+assert.equal(md5('./LICENSE.md'), '79069e31e6722533f772a4ca5de984e4');
 
-md5.async('./README.md', function (data) {
-  assert.equal(data, 'fb88aa66d27282070ab60b52301651af');
+md5.async('./LICENSE.md', function (data) {
+  assert.equal(data, '79069e31e6722533f772a4ca5de984e4');
 });
 
-md5.async('./README.md', function (data) {
-  assert.equal(data, 'fb88aa66d27282070ab60b52301651af');
+md5.async('./LICENSE.md', function (data) {
+  assert.equal(data, '79069e31e6722533f772a4ca5de984e4');
 }, true);
 
 // errors
