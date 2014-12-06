@@ -14,7 +14,7 @@ module.exports.async = function (filename, callback, strict) {
   fs.readFile(filename, function (error, data) {
     if (error) {
       if (strict) {
-        throw error;
+        throw new Error(error);
       }
       return callback(error);
     }

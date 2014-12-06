@@ -5,7 +5,7 @@
     "index.js",
     "test.js"
   ],
-  "version": "1.1.5",
+  "version": "1.1.7",
   "description": "return an md5sum of a given file",
   "keywords": [
     "md5",

@@ -1,13 +1,17 @@
-# md5-file
+# md5-file [![Build Status](https://travis-ci.org/roryrjb/md5-file.svg?branch=master)](https://travis-ci.org/roryrjb/md5-file)
 
-### Overview
-
-Simply return an `md5` sum of a given file.
+> Simply return an `md5` sum of a given file.
 
 ### Installation
 
 ```
 $ npm install md5-file
+```
+
+__Test:__
+
+```
+$ npm test
 ```
 
 ### API
@@ -49,4 +53,3 @@ md5File.async('./null', function (data) {
   console.log(data);
 }, true);
 ```
-

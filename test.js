@@ -1,26 +1,21 @@
 'use strict';
 
 var md5 = require('./index');
+var assert = require('assert');
 
-console.log('md5 (1) ' + md5('./README.md'));
+assert.equal(md5('./README.md'), 'fb88aa66d27282070ab60b52301651af');
 
 md5.async('./README.md', function (data) {
-  console.log('md5 (2) ' + data);
+  assert.equal(data, 'fb88aa66d27282070ab60b52301651af');
 });
 
 md5.async('./README.md', function (data) {
-  console.log('md5 (3) ' + data);
+  assert.equal(data, 'fb88aa66d27282070ab60b52301651af');
 }, true);
 
 // errors
 
 // non-strict: will pass through an error to `data`
 md5.async('./null', function (data) {
-  console.log('md5 (4) ' + data);
+  assert.equal(JSON.stringify(data), '{"errno":34,"code":"ENOENT","path":"./null"}');
 });
-
-// strict: will throw an error
-md5.async('./null', function (data) {
-  console.log('md5 (5) ' + data);
-}, true);
-
