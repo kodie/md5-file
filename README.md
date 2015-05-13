@@ -1,4 +1,4 @@
-# md5-file [![Build Status](https://travis-ci.org/roryrjb/md5-file.svg?branch=master)](https://travis-ci.org/roryrjb/md5-file)
+# md5-file [![Build Status](https://travis-ci.org/roryrjb/md5-file.svg?branch=master)](https://travis-ci.org/roryrjb/md5-file) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 > Simply return an `md5` sum of a given file.
 
@@ -16,42 +16,21 @@ $ npm test
 
 ### API
 
-_Sync:_
-
 __md5File(path)__
 
 ```javascript
-var md5File = require('md5-file');
+var md5File = require('md5-file')
 
-md5File('path/to/a_file'); // '18e904aae79b5642ed7975c0a0074936'
-```
+// sync (no callback)
 
-_Async:_
+md5File('./path/to/a_file') // '18e904aae79b5642ed7975c0a0074936'
 
-__md5File(path, callback, [strict])__
+// async/streamed (if using callback)
 
-If _strict_ is `true` and there is an error it will `throw` it, otherwise it will pass an error string through the callback.
-
-```javascript
-md5File.async('./README.md', function (data) {
-  console.log(data);
-});
-
-md5File.async('./README.md', function (data) {
-  console.log(data);
-}, true);
-
-// errors
-
-// non-strict: will pass through an error to `data`
-md5File.async('./null', function (data) {
-  console.log(data);
-});
-
-// strict: will throw an error
-md5File.async('./null', function (data) {
-  console.log(data);
-}, true);
+md5File('./path/to/a_file', function (error, sum) {
+  if (error) return console.log(error)
+  console.log(sum)
+})
 ```
 
 ### License

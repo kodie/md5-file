@@ -1,25 +1,27 @@
-'use strict';
+'use strict'
 
-var crypto = require('crypto');
-var fs = require('fs');
+var crypto = require('crypto')
+var fs = require('fs')
 
-module.exports = function (filename) {
-  var sum = crypto.createHash('md5');
-  sum.update(fs.readFileSync(filename));
-  return sum.digest('hex');
-};
-
-// if `strict` then throw error otherwise pass error through
-module.exports.async = function (filename, callback, strict) {
-  fs.readFile(filename, function (error, data) {
-    if (error) {
-      if (strict) {
-        throw new Error(error);
+module.exports = function (filename, callback) {
+  var sum = crypto.createHash('md5')
+  if (callback && typeof callback === 'function') {
+    var fileStream = fs.createReadStream(filename)
+    fileStream.on('error', function (err) {
+      return callback(err, null)
+    })
+    fileStream.on('data', function (chunk) {
+      try {
+        sum.update(chunk)
+      } catch (ex) {
+        return callback(ex, null)
       }
-      return callback(error);
-    }
-    var sum = crypto.createHash('md5');
-    sum.update(data);
-    return callback(sum.digest('hex'));
-  });
-};
+    })
+    fileStream.on('end', function () {
+      return callback(null, sum.digest('hex'))
+    })
+  } else {
+    sum.update(fs.readFileSync(filename))
+    return sum.digest('hex')
+  }
+}

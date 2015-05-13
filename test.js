@@ -1,21 +1,19 @@
-'use strict';
+'use strict'
 
-var md5 = require('./index');
-var assert = require('assert');
+var md5File = require('./index')
+var assert = require('assert')
+var filename = 'LICENSE.md'
+var preCheckedSum = '79069e31e6722533f772a4ca5de984e4'
 
-assert.equal(md5('./LICENSE.md'), '79069e31e6722533f772a4ca5de984e4');
+md5File(filename, function (error, sum) {
+  console.log('sum = ' + sum)
+  assert(error === null)
+  assert(sum === preCheckedSum)
+  console.log('Pass 2/2')
+})
 
-md5.async('./LICENSE.md', function (data) {
-  assert.equal(data, '79069e31e6722533f772a4ca5de984e4');
-});
+var syncSum = md5File(filename)
 
-md5.async('./LICENSE.md', function (data) {
-  assert.equal(data, '79069e31e6722533f772a4ca5de984e4');
-}, true);
-
-// errors
-
-// non-strict: will pass through an error to `data`
-md5.async('./null', function (data) {
-  assert.equal(data.code, 'ENOENT');
-});
+assert(syncSum === preCheckedSum)
+console.log('sum = ' + syncSum)
+console.log('Pass 1/2')
