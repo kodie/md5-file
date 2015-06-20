@@ -16,7 +16,7 @@ $ npm test
 
 ### API
 
-__md5File(path)__
+__md5File(path, [callback])__
 
 ```javascript
 var md5File = require('md5-file')
