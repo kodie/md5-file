@@ -3,7 +3,7 @@
 var md5File = require('./index')
 var assert = require('assert')
 var filename = 'LICENSE.md'
-var preCheckedSum = '79069e31e6722533f772a4ca5de984e4'
+var preCheckedSum = 'a06f55ab67333b93e8edebff0ae86027'
 
 md5File(filename, function (error, sum) {
   console.log('sum = ' + sum)
@@ -17,3 +17,10 @@ var syncSum = md5File(filename)
 assert(syncSum === preCheckedSum)
 console.log('sum = ' + syncSum)
 console.log('Pass 1/2')
+
+// errors
+
+md5File('does not exist', function (error, sum) {
+  assert(error)
+  assert(!sum)
+})
