@@ -3,7 +3,7 @@
 var md5File = require('./index')
 var assert = require('assert')
 var filename = 'LICENSE.md'
-var preCheckedSum = 'a06f55ab67333b93e8edebff0ae86027'
+var preCheckedSum = '687d0001c49a6315989af72c0325dff3'
 
 md5File(filename, function (error, sum) {
   console.log('sum = ' + sum)
