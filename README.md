@@ -1,37 +1,41 @@
 # md5-file [![Build Status](https://travis-ci.org/roryrjb/md5-file.svg?branch=master)](https://travis-ci.org/roryrjb/md5-file) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
-> Simply return an `md5` sum of a given file. If using async version (by including callback), it will stream; successfully tested on files 4 GB+.
+Get the MD5-sum of a given file, with low memory usage, even on huge files.
 
-### Installation
+## Installation
 
-```
-$ npm install md5-file
-```
-
-__Test:__
-
-```
-$ npm test
+```sh
+npm install --save md5-file
 ```
 
-### API
+## Usage
 
-__md5File(path, [callback])__
+```js
+const md5File = require('md5-file')
 
-```javascript
-var md5File = require('md5-file')
+/* Async usage */
+md5File('LICENSE.md', (err, hash) => {
+  if (err) throw err
 
-// sync (no callback)
-
-md5File('./path/to/a_file') // '18e904aae79b5642ed7975c0a0074936'
-
-// async/streamed (if using callback)
-
-md5File('./path/to/a_file', function (error, sum) {
-  if (error) return console.log(error)
-  console.log(sum) // '18e904aae79b5642ed7975c0a0074936'
+  console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
 })
+
+/* Sync usage */
+const hash = md5File('LICENSE.md')
+console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
 ```
+
+## API
+
+### `md5File(filepath: string, cb: function)`
+
+Asynchronously get the MD5-sum of the file at `filepath`.
+
+The callback `cb` will be called with `(err: Error, hash: string)`.
+
+### `md5File(filepath: string) => string`
+
+Synchronously get the MD5-sum of the file at `filepath`.
 
 ### License
 
