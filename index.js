@@ -3,25 +3,31 @@
 var crypto = require('crypto')
 var fs = require('fs')
 
-module.exports = function (filename, callback) {
+function md5FileSync (filename) {
   var sum = crypto.createHash('md5')
-  if (callback && typeof callback === 'function') {
-    var fileStream = fs.createReadStream(filename)
-    fileStream.on('error', function (err) {
-      return callback(err, null)
-    })
-    fileStream.on('data', function (chunk) {
-      try {
-        sum.update(chunk)
-      } catch (ex) {
-        return callback(ex, null)
-      }
-    })
-    fileStream.on('end', function () {
-      return callback(null, sum.digest('hex'))
-    })
-  } else {
-    sum.update(fs.readFileSync(filename))
-    return sum.digest('hex')
+  var data = fs.readFileSync(filename)
+
+  return sum.update(data).digest('hex')
+}
+
+module.exports = function (filename, callback) {
+  if (typeof callback !== 'function') {
+    return md5FileSync(filename)
   }
+
+  var sum = crypto.createHash('md5')
+  var fileStream = fs.createReadStream(filename)
+  fileStream.on('error', function (err) {
+    return callback(err, null)
+  })
+  fileStream.on('data', function (chunk) {
+    try {
+      sum.update(chunk)
+    } catch (ex) {
+      return callback(ex, null)
+    }
+  })
+  fileStream.on('end', function () {
+    return callback(null, sum.digest('hex'))
+  })
 }
