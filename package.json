@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "mocha": "^2.4.5",
-    "standard": "^3.8.0"
+    "standard": "^7.1.0"
   }
 }
