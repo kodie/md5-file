@@ -1,26 +1,35 @@
+/* eslint-env mocha */
+
 'use strict'
 
-var md5File = require('./index')
+var md5File = require('./')
 var assert = require('assert')
+
 var filename = 'LICENSE.md'
 var preCheckedSum = '687d0001c49a6315989af72c0325dff3'
 
-md5File(filename, function (error, sum) {
-  console.log('sum = ' + sum)
-  assert(error === null)
-  assert(sum === preCheckedSum)
-  console.log('Pass 2/2')
-})
+describe('md5File', function () {
+  it('works asynchronously', function (done) {
+    md5File(filename, function (err, hash) {
+      assert.ifError(err)
+      assert.equal(hash, preCheckedSum)
 
-var syncSum = md5File(filename)
+      done()
+    })
+  })
 
-assert(syncSum === preCheckedSum)
-console.log('sum = ' + syncSum)
-console.log('Pass 1/2')
+  it('works synchronously', function () {
+    var actual = md5File(filename)
 
-// errors
+    assert.equal(actual, preCheckedSum)
+  })
 
-md5File('does not exist', function (error, sum) {
-  assert(error)
-  assert(!sum)
+  it('has proper error handling', function (done) {
+    md5File('does not exist', function (err) {
+      assert.ok(err)
+      assert.equal(err.code, 'ENOENT')
+
+      done()
+    })
+  })
 })

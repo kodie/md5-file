@@ -30,9 +30,10 @@
     "email": "roryrjb@gmail.com"
   },
   "scripts": {
-    "test": "standard && node test"
+    "test": "standard && mocha"
   },
   "devDependencies": {
+    "mocha": "^2.4.5",
     "standard": "^3.8.0"
   }
 }
