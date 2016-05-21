@@ -1,6 +1,7 @@
 {
   "name": "md5-file",
   "main": "index.js",
+  "repository": "roryrjb/md5-file",
   "files": [
     "index.js",
     "test.js",
@@ -14,21 +15,12 @@
     "md5sum",
     "checksum"
   ],
-  "homepage": "https://github.com/roryrjb/md5-file",
   "author": {
     "name": "Rory Bradford",
     "email": "roryrjb@gmail.com",
     "url": "www.roryrjb.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/roryrjb/md5-file.git"
-  },
   "license": "MIT",
-  "bugs": {
-    "url": "http://github.com/roryrjb/md5-file/issues",
-    "email": "roryrjb@gmail.com"
-  },
   "scripts": {
     "test": "standard && mocha"
   },
