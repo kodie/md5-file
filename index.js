@@ -10,24 +10,21 @@ function md5FileSync (filename) {
   return sum.update(data).digest('hex')
 }
 
-module.exports = function (filename, callback) {
-  if (typeof callback !== 'function') {
+module.exports = function (filename, cb) {
+  if (typeof cb !== 'function') {
     return md5FileSync(filename)
   }
 
-  var sum = crypto.createHash('md5')
-  var fileStream = fs.createReadStream(filename)
-  fileStream.on('error', function (err) {
-    return callback(err, null)
+  var output = crypto.createHash('md5')
+  var input = fs.createReadStream(filename)
+
+  input.on('error', function (err) {
+    cb(err)
   })
-  fileStream.on('data', function (chunk) {
-    try {
-      sum.update(chunk)
-    } catch (ex) {
-      return callback(ex, null)
-    }
+
+  output.on('readable', function () {
+    cb(null, output.read().toString('hex'))
   })
-  fileStream.on('end', function () {
-    return callback(null, sum.digest('hex'))
-  })
+
+  input.pipe(output)
 }
