@@ -36,7 +36,7 @@ module.exports = function (filename, cb) {
     cb(err)
   })
 
-  output.on('readable', function () {
+  output.once('readable', function () {
     cb(null, output.read().toString('hex'))
   })
 
