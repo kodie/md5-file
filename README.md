@@ -25,6 +25,19 @@ const hash = md5File.sync('LICENSE.md')
 console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
 ```
 
+## Promise support
+
+If you require `md5-file/promise` you'll receive an alternative API where all
+functions that takes callbacks are replaced by `Promise`-returning functions.
+
+```js
+const md5File = require('md5-file/promise')
+
+md5File('LICENSE.md').then(hash => {
+  console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
+})
+```
+
 ## API
 
 ### `md5File(filepath: string, cb: function)`

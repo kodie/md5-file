@@ -3,6 +3,7 @@
 'use strict'
 
 var md5File = require('./')
+var md5FileAsPromised = require('./promise')
 var assert = require('assert')
 
 var filename = 'LICENSE.md'
@@ -55,4 +56,12 @@ describe('md5File', function () {
       assert.throws(function () { md5File(value, noop) }, TypeError)
     })
   })
+
+  if (typeof Promise !== 'undefined') {
+    it('provides a Promise based api', function () {
+      return md5FileAsPromised(filename).then(function (hash) {
+        assert.equal(hash, preCheckedSum)
+      })
+    })
+  }
 })
