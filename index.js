@@ -24,10 +24,8 @@ function md5FileSync (filename) {
   return hash.digest('hex')
 }
 
-module.exports = function (filename, cb) {
-  if (typeof cb !== 'function') {
-    return md5FileSync(filename)
-  }
+function md5File (filename, cb) {
+  if (typeof cb !== 'function') throw new TypeError('Argument cb must be a function')
 
   var output = crypto.createHash('md5')
   var input = fs.createReadStream(filename)
@@ -42,3 +40,6 @@ module.exports = function (filename, cb) {
 
   input.pipe(output)
 }
+
+module.exports = md5File
+module.exports.sync = md5FileSync

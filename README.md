@@ -21,7 +21,7 @@ md5File('LICENSE.md', (err, hash) => {
 })
 
 /* Sync usage */
-const hash = md5File('LICENSE.md')
+const hash = md5File.sync('LICENSE.md')
 console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
 ```
 
@@ -33,7 +33,7 @@ Asynchronously get the MD5-sum of the file at `filepath`.
 
 The callback `cb` will be called with `(err: Error, hash: string)`.
 
-### `md5File(filepath: string) => string`
+### `md5File.sync(filepath: string) => string`
 
 Synchronously get the MD5-sum of the file at `filepath`.
 
