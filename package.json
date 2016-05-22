@@ -8,7 +8,7 @@
     "LICENSE.md",
     "README.md"
   ],
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "return an md5sum of a given file",
   "keywords": [
     "md5",
