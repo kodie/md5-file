@@ -4,9 +4,7 @@
   "repository": "roryrjb/md5-file",
   "files": [
     "index.js",
-    "test.js",
-    "LICENSE.md",
-    "README.md"
+    "promise.js"
   ],
   "version": "3.1.0",
   "description": "return an md5sum of a given file",
