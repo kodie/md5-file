@@ -43,7 +43,7 @@ function md5File (filename, cb) {
 }
 
 if (require.main === module) {
-  console.log(md5FileSync(process.argv[2]));
+  console.log(md5FileSync(process.argv[2]))
 }
 
 module.exports = md5File
