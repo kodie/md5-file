@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict'
 
 var crypto = require('crypto')
@@ -39,6 +40,10 @@ function md5File (filename, cb) {
   })
 
   input.pipe(output)
+}
+
+if (require.main === module) {
+  console.log(md5FileSync(process.argv[2]))
 }
 
 module.exports = md5File
