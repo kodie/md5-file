@@ -10,6 +10,7 @@ npm install --save md5-file
 
 ## Usage
 
+### As a module
 ```js
 const md5File = require('md5-file')
 
@@ -23,6 +24,11 @@ md5File('LICENSE.md', (err, hash) => {
 /* Sync usage */
 const hash = md5File.sync('LICENSE.md')
 console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
+```
+
+### As a command line tool
+```
+$ md5-file LICENSE.md
 ```
 
 ## Promise support
