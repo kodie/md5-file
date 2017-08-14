@@ -9,7 +9,7 @@ var BUFFER_SIZE = 8192
 function md5FileSync (filename) {
   var fd = fs.openSync(filename, 'r')
   var hash = crypto.createHash('md5')
-  var buffer = new Buffer(BUFFER_SIZE)
+  var buffer = Buffer.alloc(BUFFER_SIZE)
 
   try {
     var bytesRead

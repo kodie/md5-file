@@ -6,7 +6,7 @@
     "index.js",
     "promise.js"
   ],
-  "version": "3.1.1",
+  "version": "3.2.0",
   "description": "return an md5sum of a given file",
   "keywords": [
     "md5",
@@ -15,8 +15,7 @@
   ],
   "author": {
     "name": "Rory Bradford",
-    "email": "roryrjb@gmail.com",
-    "url": "www.roryrjb.com"
+    "email": "rory@dysfunctionalprogramming.com"
   },
   "license": "MIT",
   "scripts": {

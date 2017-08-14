@@ -7,7 +7,7 @@ var md5FileAsPromised = require('./promise')
 var assert = require('assert')
 
 var filename = 'LICENSE.md'
-var preCheckedSum = '687d0001c49a6315989af72c0325dff3'
+var preCheckedSum = 'ad1faf9381e43c471dc381c17a4ee4b6'
 
 function noop () {}
 
