@@ -27,6 +27,9 @@
     "standard": "^7.1.0"
   },
   "engines": {
-    "node": ">=4.5.0"
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "buffer-alloc": "^1.1.0"
   }
 }
