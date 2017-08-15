@@ -3,13 +3,14 @@
 
 var crypto = require('crypto')
 var fs = require('fs')
+var alloc = require('buffer-alloc')
 
 var BUFFER_SIZE = 8192
 
 function md5FileSync (filename) {
   var fd = fs.openSync(filename, 'r')
   var hash = crypto.createHash('md5')
-  var buffer = Buffer.alloc(BUFFER_SIZE)
+  var buffer = alloc(BUFFER_SIZE)
 
   try {
     var bytesRead
