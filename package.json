@@ -6,7 +6,7 @@
     "index.js",
     "promise.js"
   ],
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "return an md5sum of a given file",
   "keywords": [
     "md5",
@@ -25,5 +25,8 @@
   "devDependencies": {
     "mocha": "^2.4.5",
     "standard": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=4.5.0"
   }
 }
