@@ -3,6 +3,7 @@
   "main": "index.js",
   "repository": "roryrjb/md5-file",
   "files": [
+    "cli.js",
     "index.js",
     "promise.js"
   ],
@@ -21,7 +22,7 @@
   "scripts": {
     "test": "standard && mocha"
   },
-  "bin": "index.js",
+  "bin": "cli.js",
   "devDependencies": {
     "mocha": "^2.4.5",
     "standard": "^7.1.0"
