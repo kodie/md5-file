@@ -24,6 +24,9 @@ md5File('LICENSE.md', (err, hash) => {
 /* Sync usage */
 const hash = md5File.sync('LICENSE.md')
 console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
+
+/* Dir usage */
+const dirHash = md5File.dirSync('./path/to/dir', ['./path/to/dir/foo/', './path/to/dir/bar.txt'])
 ```
 
 ### As a command line tool
@@ -55,6 +58,10 @@ The callback `cb` will be called with `(err: Error, hash: string)`.
 ### `md5File.sync(filepath: string) => string`
 
 Synchronously get the MD5-sum of the file at `filepath`.
+
+### `md5File.dirSync(dirpath: string, ignorePaths: string[] | string) => string'
+
+Synchronously get the MD5-sum of all files in `dirpath` excluding paths from `ignorePaths`.
 
 ### License
 
