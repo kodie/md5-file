@@ -29,8 +29,5 @@
   },
   "engines": {
     "node": ">=6.0"
-  },
-  "dependencies": {
-    "buffer-alloc": "^1.1.0"
   }
 }
