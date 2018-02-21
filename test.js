@@ -2,12 +2,12 @@
 
 'use strict'
 
-var md5File = require('./')
-var md5FileAsPromised = require('./promise')
-var assert = require('assert')
+const md5File = require('./')
+const md5FileAsPromised = require('./promise')
+const assert = require('assert')
 
-var filename = 'LICENSE.md'
-var preCheckedSum = 'ad1faf9381e43c471dc381c17a4ee4b6'
+const filename = 'LICENSE.md'
+const preCheckedSum = 'ad1faf9381e43c471dc381c17a4ee4b6'
 
 function noop () {}
 
