@@ -1,18 +1,18 @@
 'use strict'
 
-var crypto = require('crypto')
-var fs = require('fs')
-var alloc = require('buffer-alloc')
+const crypto = require('crypto')
+const fs = require('fs')
+const alloc = require('buffer-alloc')
 
-var BUFFER_SIZE = 8192
+const BUFFER_SIZE = 8192
 
 function md5FileSync (filename) {
-  var fd = fs.openSync(filename, 'r')
-  var hash = crypto.createHash('md5')
-  var buffer = alloc(BUFFER_SIZE)
+  const fd = fs.openSync(filename, 'r')
+  const hash = crypto.createHash('md5')
+  const buffer = alloc(BUFFER_SIZE)
 
   try {
-    var bytesRead
+    let bytesRead
 
     do {
       bytesRead = fs.readSync(fd, buffer, 0, BUFFER_SIZE)
@@ -28,8 +28,8 @@ function md5FileSync (filename) {
 function md5File (filename, cb) {
   if (typeof cb !== 'function') throw new TypeError('Argument cb must be a function')
 
-  var output = crypto.createHash('md5')
-  var input = fs.createReadStream(filename)
+  const output = crypto.createHash('md5')
+  const input = fs.createReadStream(filename)
 
   input.on('error', function (err) {
     cb(err)
