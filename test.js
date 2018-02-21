@@ -44,12 +44,9 @@ describe('md5File', function () {
       {},
       123,
       null,
-      undefined
+      undefined,
+      Symbol('test')
     ]
-
-    if (typeof Symbol !== 'undefined') {
-      invalidValues.push(Symbol('test'))
-    }
 
     invalidValues.forEach(function (value) {
       assert.throws(function () { md5File.sync(value) }, TypeError)
