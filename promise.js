@@ -1,6 +1,6 @@
 'use strict'
 
-var md5File = require('./')
+const md5File = require('./')
 
 function md5FileAsPromised (filename) {
   return new Promise(function (resolve, reject) {
