@@ -41,5 +41,24 @@ function md5File (filename, cb) {
   input.pipe(output)
 }
 
+function md5BufferSync (buffer) {
+  const hash = crypto.createHash('md5')
+  const total = buffer.length
+
+  let begin = 0
+
+  do {
+    // slice(begin, end)
+    // if end is greater than the length, only to the real end
+    const read = buffer.slice(begin, BUFFER_SIZE)
+    hash.update(read)
+    begin += BUFFER_SIZE
+    if (begin >= total) break
+  } while (true)
+
+  return hash.digest('hex')
+}
+
 module.exports = md5File
 module.exports.sync = md5FileSync
+module.exports.bufferSync = md5BufferSync
