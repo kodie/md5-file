@@ -44,6 +44,10 @@ md5File('LICENSE.md').then(hash => {
 })
 ```
 
+## TypeScript
+
+The declarations can be installed via `npm install @types/md5-file`
+
 ## API
 
 ### `md5File(filepath: string, cb: function)`
