@@ -1,3 +1,5 @@
+[__Looking for a new maintainer__](https://github.com/roryrjb/md5-file/issues/24)
+
 # md5-file [![Build Status](https://travis-ci.org/roryrjb/md5-file.svg?branch=master)](https://travis-ci.org/roryrjb/md5-file) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 Get the MD5-sum of a given file, with low memory usage, even on huge files.
