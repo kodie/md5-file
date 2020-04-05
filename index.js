@@ -3,8 +3,8 @@ const fs = require('fs')
 
 const BUFFER_SIZE = 8192
 
-function md5FileSync (filename) {
-  const fd = fs.openSync(filename, 'r')
+function md5FileSync (path) {
+  const fd = fs.openSync(path, 'r')
   const hash = crypto.createHash('md5')
   const buffer = Buffer.alloc(BUFFER_SIZE)
 
@@ -22,10 +22,10 @@ function md5FileSync (filename) {
   return hash.digest('hex')
 }
 
-function md5File (filename) {
+function md5File (path) {
   return new Promise((resolve, reject) => {
     const output = crypto.createHash('md5')
-    const input = fs.createReadStream(filename)
+    const input = fs.createReadStream(path)
 
     input.on('error', (err) => {
       reject(err)

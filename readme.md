@@ -32,21 +32,17 @@ $ md5-file LICENSE.md
 ad1faf9381e43c471dc381c17a4ee4b6
 ```
 
-## TypeScript
-
-The declarations can be installed via `npm install @types/md5-file`
-
 ## API
 
-### `md5File(filepath: string) => Promise<string>`
+### `md5File(path: string) => Promise<string>`
 
-Asynchronously get the MD5-sum of the file at `filepath`.
+Asynchronously get the MD5-sum of the file at `path`.
 
 Returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be resolved with a string containing the MD5-sum.
 
-### `md5File.sync(filepath: string) => string`
+### `md5File.sync(path: string) => string`
 
-Synchronously get the MD5-sum of the file at `filepath`.
+Synchronously get the MD5-sum of the file at `path`.
 
 ### License
 

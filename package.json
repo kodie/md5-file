@@ -11,6 +11,7 @@
   "bin": "cli.js",
   "files": [
     "cli.js",
+    "index.d.ts",
     "index.js"
   ],
   "scripts": {
