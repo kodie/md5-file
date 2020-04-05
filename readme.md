@@ -1,6 +1,4 @@
-[__Looking for a new maintainer__](https://github.com/roryrjb/md5-file/issues/24)
-
-# md5-file [![Build Status](https://travis-ci.org/roryrjb/md5-file.svg?branch=master)](https://travis-ci.org/roryrjb/md5-file) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+# MD5 file
 
 Get the MD5-sum of a given file, with low memory usage, even on huge files.
 
@@ -13,6 +11,7 @@ npm install --save md5-file
 ## Usage
 
 ### As a module
+
 ```js
 const md5File = require('md5-file')
 
@@ -29,8 +28,10 @@ console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
 ```
 
 ### As a command line tool
-```
+
+```sh
 $ md5-file LICENSE.md
+ad1faf9381e43c471dc381c17a4ee4b6
 ```
 
 ## Promise support

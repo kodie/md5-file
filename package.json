@@ -1,27 +1,21 @@
 {
   "name": "md5-file",
-  "main": "index.js",
-  "repository": "roryrjb/md5-file",
-  "files": [
-    "cli.js",
-    "index.js"
-  ],
   "version": "4.0.0",
-  "description": "return an md5sum of a given file",
   "keywords": [
     "md5",
     "md5sum",
     "checksum"
   ],
-  "author": {
-    "name": "Rory Bradford",
-    "email": "rory@dysfunctionalprogramming.com"
-  },
+  "repository": "roryrjb/md5-file",
   "license": "MIT",
+  "bin": "cli.js",
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
   "scripts": {
     "test": "standard && mocha"
   },
-  "bin": "cli.js",
   "devDependencies": {
     "mocha": "^5.0.5",
     "standard": "^11.0.1"
