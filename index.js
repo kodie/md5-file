@@ -1,5 +1,3 @@
-'use strict'
-
 const crypto = require('crypto')
 const fs = require('fs')
 
@@ -29,11 +27,11 @@ function md5File (filename) {
     const output = crypto.createHash('md5')
     const input = fs.createReadStream(filename)
 
-    input.on('error', function (err) {
+    input.on('error', (err) => {
       reject(err)
     })
 
-    output.once('readable', function () {
+    output.once('readable', () => {
       resolve(output.read().toString('hex'))
     })
 
