@@ -4,19 +4,15 @@
 
 const md5File = require('./')
 const assert = require('assert')
+const assertRejects = require('assert-rejects')
 
 const filename = 'LICENSE.md'
 const preCheckedSum = 'ad1faf9381e43c471dc381c17a4ee4b6'
 
-function noop () {}
-
 describe('md5File', function () {
-  it('works asynchronously', function (done) {
-    md5File(filename, function (err, hash) {
-      assert.ifError(err)
+  it('works asynchronously', function () {
+    return md5File(filename).then((hash) => {
       assert.equal(hash, preCheckedSum)
-
-      done()
     })
   })
 
@@ -24,13 +20,8 @@ describe('md5File', function () {
     assert.equal(md5File.sync(filename), preCheckedSum)
   })
 
-  it('has proper error handling', function (done) {
-    md5File('does not exist', function (err) {
-      assert.ok(err)
-      assert.equal(err.code, 'ENOENT')
-
-      done()
-    })
+  it('has proper error handling', function () {
+    return assertRejects(md5File('does not exist'), (err) => err.code === 'ENOENT')
   })
 
   it('only accepts strings and buffers', function () {
@@ -43,17 +34,12 @@ describe('md5File', function () {
       Symbol('test')
     ]
 
-    invalidValues.forEach(function (value) {
-      assert.throws(function () { md5File.sync(value) }, TypeError)
-      assert.throws(function () { md5File(value, noop) }, TypeError)
+    invalidValues.forEach((value) => {
+      assert.throws(() => { md5File.sync(value) }, TypeError)
+    })
+
+    return invalidValues.map((value) => {
+      return assertRejects(md5File(value), TypeError)
     })
   })
-
-  if (typeof Promise !== 'undefined') {
-    it('provides a Promise based api', function () {
-      return md5File(filename).then(function (hash) {
-        assert.equal(hash, preCheckedSum)
-      })
-    })
-  }
 })

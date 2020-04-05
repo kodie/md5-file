@@ -16,9 +16,7 @@ npm install --save md5-file
 const md5File = require('md5-file')
 
 /* Async usage */
-md5File('LICENSE.md', (err, hash) => {
-  if (err) throw err
-
+md5File('LICENSE.md').then((hash) => {
   console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
 })
 
@@ -34,29 +32,17 @@ $ md5-file LICENSE.md
 ad1faf9381e43c471dc381c17a4ee4b6
 ```
 
-## Promise support
-
-You can optionally exclude the callback argument to receive a promise:
-
-```js
-const md5File = require('md5-file')
-
-md5File('LICENSE.md').then(hash => {
-  console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
-})
-```
-
 ## TypeScript
 
 The declarations can be installed via `npm install @types/md5-file`
 
 ## API
 
-### `md5File(filepath: string, cb?: function)`
+### `md5File(filepath: string) => Promise<string>`
 
 Asynchronously get the MD5-sum of the file at `filepath`.
 
-The callback `cb` will be called with `(err: Error, hash: string)`.
+Returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be resolved with a string containing the MD5-sum.
 
 ### `md5File.sync(filepath: string) => string`
 

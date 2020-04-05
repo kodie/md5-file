@@ -24,34 +24,22 @@ function md5FileSync (filename) {
   return hash.digest('hex')
 }
 
-function md5File (filename, cb) {
-  if (typeof cb !== 'function') throw new TypeError('Argument cb must be a function')
-
-  const output = crypto.createHash('md5')
-  const input = fs.createReadStream(filename)
-
-  input.on('error', function (err) {
-    cb(err)
-  })
-
-  output.once('readable', function () {
-    cb(null, output.read().toString('hex'))
-  })
-
-  input.pipe(output)
-}
-
-module.exports = (filename, cb) => {
-  if (cb) return md5File(filename, cb)
-
+function md5File (filename) {
   return new Promise((resolve, reject) => {
-    md5File(filename, (error, hash) => {
-      if (error) {
-        reject(error)
-      } else {
-        resolve(hash)
-      }
+    const output = crypto.createHash('md5')
+    const input = fs.createReadStream(filename)
+
+    input.on('error', function (err) {
+      reject(err)
     })
+
+    output.once('readable', function () {
+      resolve(output.read().toString('hex'))
+    })
+
+    input.pipe(output)
   })
 }
+
+module.exports = md5File
 module.exports.sync = md5FileSync
