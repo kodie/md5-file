@@ -41,5 +41,17 @@ function md5File (filename, cb) {
   input.pipe(output)
 }
 
-module.exports = md5File
+module.exports = (filename, cb) => {
+  if (cb) return md5File(filename, cb)
+
+  return new Promise((resolve, reject) => {
+    md5File(filename, (error, hash) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve(hash)
+      }
+    })
+  })
+}
 module.exports.sync = md5FileSync
