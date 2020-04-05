@@ -35,11 +35,10 @@ $ md5-file LICENSE.md
 
 ## Promise support
 
-If you require `md5-file/promise` you'll receive an alternative API where all
-functions that takes callbacks are replaced by `Promise`-returning functions.
+You can optionally exclude the callback argument to receive a promise:
 
 ```js
-const md5File = require('md5-file/promise')
+const md5File = require('md5-file')
 
 md5File('LICENSE.md').then(hash => {
   console.log(`The MD5 sum of LICENSE.md is: ${hash}`)
@@ -52,7 +51,7 @@ The declarations can be installed via `npm install @types/md5-file`
 
 ## API
 
-### `md5File(filepath: string, cb: function)`
+### `md5File(filepath: string, cb?: function)`
 
 Asynchronously get the MD5-sum of the file at `filepath`.
 
