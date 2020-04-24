@@ -1,5 +1,6 @@
 const crypto = require('crypto')
 const fs = require('fs')
+const fsP = require('fs').promises
 
 const BUFFER_SIZE = 8192
 
@@ -22,21 +23,17 @@ function md5FileSync (path) {
   return hash.digest('hex')
 }
 
-function md5File (path) {
-  return new Promise((resolve, reject) => {
-    const output = crypto.createHash('md5')
-    const input = fs.createReadStream(path)
-
-    input.on('error', (err) => {
-      reject(err)
-    })
-
-    output.once('readable', () => {
-      resolve(output.read().toString('hex'))
-    })
-
-    input.pipe(output)
-  })
+async function md5File (path) {
+  const fd = await fsP.open(path, 'r');
+  try {
+    const buff = Buffer.alloc(BUFFER_SIZE);
+    const { buffer } = await fd.read(buff, 0, buff.length, 0);
+    const hash = crypto.createHash('md5');
+    hash.update(buffer.slice(0, buffer));
+    return hash.digest('hex');
+  } finally {
+    fd.close();
+  }
 }
 
 module.exports = md5File
